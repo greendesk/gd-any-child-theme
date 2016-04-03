@@ -1,0 +1,17 @@
+{
+    "name": "greendesk/gd-any-child-theme",
+    "description": "Child theme for any parent theme.",
+    "type": "wordpress-theme",
+    "require": {
+        "johnpbloch/wordpress": "^4.4",
+        "johnpbloch/wordpress-core-installer": "^0.2.1"
+    },
+    "license": "GPL 2.0",
+    "authors": [
+        {
+            "name": "Przemek Cichon",
+            "email": "przemek@greendesk.pl"
+        }
+    ],
+    "minimum-stability": "dev"
+}
