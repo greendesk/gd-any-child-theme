@@ -5,7 +5,7 @@
  * This file lets you unregister existing sidebars and register new ones.
  *
  * @package      GD_Any_Child_Theme
- * @subpackage	 GD_Any_Child_Theme\Assets
+ * @subpackage   GD_Any_Child_Theme\Assets
  * @since        0.1.0
  * @link         https://bitbucket.org/greendesk/gd-any-child-theme
  * @author       Przemek Cichon <przemek@greendesk.pl>
@@ -84,6 +84,9 @@ add_action( 'wp_enqueue_scripts', 'any_child_theme_stylesheets' );
  */
 function any_child_theme_stylesheets(){
     
+    // Enqueue parent theme stylesheet
+    any_child_theme_enqueue_style( array( 'handle' => PARENT_THEME_NAME, 'src' => get_template_directory_uri() . '/style.css' ) );
+    // Enqueue child theme stylesheet
     any_child_theme_enqueue_style( array( 'handle' => CHILD_THEME_NAME, 'src' => get_stylesheet_uri() ) );
 
     // Add file names without css extension from assets/css/ directory
@@ -91,7 +94,7 @@ function any_child_theme_stylesheets(){
 
     // Loop through the $stylesheets array and enqueue stylesheets
     foreach ( $stylesheets as $stylesheet ) {
-    	any_child_theme_enqueue_style( array( 'handle' => $stylesheet ) );
+        any_child_theme_enqueue_style( array( 'handle' => $stylesheet ) );
     }  
     
 }
@@ -106,11 +109,13 @@ add_action( 'wp_enqueue_scripts', 'any_child_theme_scripts' );
 function any_child_theme_scripts(){
 
     // Add file names without css extension from assets/js/ directory
-    $scripts = array( 'owl.carousel.min' );
-
-    foreach ( $scripts as $script ) {
-    	any_child_theme_enqueue_script( array( 'handle' => $script ) );
-    }  
+    $scripts = array();
+    
+    if ( ! empty( $scripts ) ) {
+        foreach ( $scripts as $script ) {
+            any_child_theme_enqueue_script( array( 'handle' => $script ) );
+        } 
+    }
     
 }
 
