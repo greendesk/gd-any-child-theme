@@ -48,22 +48,24 @@ add_action( 'after_setup_theme', 'any_child_theme_constants' );
  *
  */
  function any_child_theme_constants(){
- 	define( 'CHILD_THEME_NAME', 'any_child_theme' );
-    define( 'CHILD_THEME_URL', 'http://www.greendesk.pl/gd-any-child-theme' );
+    define( 'PARENT_THEME_NAME', '' );
+    define( 'CHILD_THEME_NAME', 'any_child_theme' );
+    define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
     define( 'CHILD_THEME_VERSION', '0.1.0' );
-    define( 'CHILD_ASSETS_URL', CHILD_URL . trailingslashit('/assets') );
+    define( 'CHILD_ASSETS_URL', CHILD_THEME_URL . trailingslashit('/assets') );
     define( 'CHILD_CSS_URL', CHILD_ASSETS_URL . trailingslashit( 'css' ) );
     define( 'CHILD_FONTS_URL', CHILD_ASSETS_URL . trailingslashit( 'fonts' ) );
     define( 'CHILD_IMAGES_URL', CHILD_ASSETS_URL . trailingslashit( 'images' ) ) ;
     define( 'CHILD_JS_URL', CHILD_ASSETS_URL . trailingslashit( 'js' ) );
 
-    define( 'CHILD_ASSETS_DIR', CHILD_DIR . trailingslashit('/assets') );
+    define( 'CHILD_THEME_DIR', get_stylesheet_directory() );
+    define( 'CHILD_ASSETS_DIR', CHILD_THEME_DIR . trailingslashit('/assets') );
     define( 'CHILD_CSS_DIR', CHILD_ASSETS_DIR . trailingslashit( 'css' ) );
     define( 'CHILD_FONTS_DIR', CHILD_ASSETS_DIR . trailingslashit( 'fonts' ) );
     define( 'CHILD_IMAGES_DIR', CHILD_ASSETS_DIR . trailingslashit('images' ) ) ;
     define( 'CHILD_JS_DIR', CHILD_ASSETS_DIR . trailingslashit( 'js' ) );
-    define( 'CHILD_LIB_DIR', CHILD_DIR . trailingslashit( '/lib' ) ); 
-    define( 'CHILD_WIDGETS_DIR', CHILD_DIR . trailingslashit( '/widgets' ) );
+    define( 'CHILD_LIB_DIR', CHILD_THEME_DIR . trailingslashit( '/lib' ) ); 
+    define( 'CHILD_WIDGETS_DIR', CHILD_THEME_DIR . trailingslashit( '/widgets' ) );
  }
 
 add_action( 'after_setup_theme', 'any_child_theme_i18n' );
